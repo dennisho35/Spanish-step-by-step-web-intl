@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Step-by-Step International</title>
+    <style>
+        :root {
+            --spain-red: #AA151B;
+            --spain-yellow: #F1BF00;
+            --bg-color: #F9FAFB;
+            --text-main: #1F2937;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+        /* 頂部西班牙國旗飾條 */
+        .top-bar {
+            height: 12px;
+            background: linear-gradient(to right, var(--spain-red) 0%, var(--spain-red) 25%, var(--spain-yellow) 25%, var(--spain-yellow) 75%, var(--spain-red) 75%, var(--spain-red) 100%);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .brand {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--spain-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .lang-selector {
+            padding: 8px 12px;
+            border: 1px solid #E5E7EB;
+            border-radius: 6px;
+            background: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        main {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .hero-card {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--spain-yellow);
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin: 0 0 15px 0;
+            color: var(--text-main);
+        }
+        .subtitle {
+            color: #6B7280;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        .start-btn {
+            background-color: var(--spain-yellow);
+            color: var(--spain-red);
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(241, 191, 0, 0.3);
+        }
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(241, 191, 0, 0.4);
+        }
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .module-item {
+            background: #fff;
+            padding: 25px;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            transition: border-color 0.2s;
+        }
+        .module-item:hover {
+            border-color: var(--spain-red);
+        }
+        .icon {
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar"></div>
+    <nav>
+        <div class="brand">
+            <span style="font-size: 1.8rem;">🧊</span> <!-- 可替換為 App Icon -->
+            <span id="nav-title">Spanish Step-by-Step</span>
+        </div>
+        <select class="lang-selector" id="langSelect">
+            <option value="zh-hk">🇭🇰 正體中文</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="ja">🇯🇵 日本語</option>
+        </select>
+    </nav>
+    
+    <main>
+        <div class="hero-card">
+            <h1 id="main-title">西班牙 Step by Step</h1>
+            <p class="subtitle" id="subtitle">專為零基礎設計的國際版指南。循序漸進，掌握西班牙語。</p>
+            <button class="start-btn" id="start-btn">開始學習</button>
+            
+            <div class="modules-grid">
+                <div class="module-item">
+                    <span class="icon">🗣️</span>
+                    <span id="mod-1">字母與發音</span>
+                </div>
+                <div class="module-item">
+                    <span class="icon">🔢</span>
+                    <span id="mod-2">數字與時間</span>
+                </div>
+                <div class="module-item">
+                    <span class="icon">💬</span>
+                    <span id="mod-3">日常生活會話</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 本地化 UI 資料庫
+        const i18n = {
+            'zh-hk': {
+                navTitle: 'Spanish Step-by-Step',
+                mainTitle: '西班牙 Step by Step',
+                subtitle: '專為零基礎設計的國際版指南。循序漸進，掌握西班牙語。',
+                startBtn: '開始學習',
+                mod1: '字母與發音',
+                mod2: '數字與時間',
+                mod3: '日常生活會話'
+            },
+            'en': {
+                navTitle: 'Spanish Step-by-Step',
+                mainTitle: 'Spanish Step-by-Step',
+                subtitle: 'The international guide for absolute beginners. Master Spanish step by step.',
+                startBtn: 'Start Learning',
+                mod1: 'Alphabet & Sounds',
+                mod2: 'Numbers & Time',
+                mod3: 'Daily Conversation'
+            },
+            'es': {
+                navTitle: 'Español Paso a Paso',
+                mainTitle: 'Español Paso a Paso',
+                subtitle: 'La guía internacional para principiantes. Domina el español paso a paso.',
+                startBtn: 'Empezar ahora',
+                mod1: 'Alfabeto y Sonidos',
+                mod2: 'Números y Tiempo',
+                mod3: 'Conversación Diaria'
+            },
+            'ja': {
+                navTitle: 'スペイン語 Step-by-Step',
+                mainTitle: 'スペイン語 Step-by-Step',
+                subtitle: '完全な初心者のための国際版ガイド。スペイン語を段階的にマスター。',
+                startBtn: '学習を始める',
+                mod1: 'アルファベットと発音',
+                mod2: '数字と時間',
+                mod3: '日常会話'
+            }
+        };
+
+        // 綁定語言切換事件
+        document.getElementById('langSelect').addEventListener('change', function(e) {
+            const lang = e.target.value;
+            const t = i18n[lang];
+            
+            document.getElementById('nav-title').textContent = t.navTitle;
+            document.getElementById('main-title').textContent = t.mainTitle;
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('start-btn').textContent = t.startBtn;
+            document.getElementById('mod-1').textContent = t.mod1;
+            document.getElementById('mod-2').textContent = t.mod2;
+            document.getElementById('mod-3').textContent = t.mod3;
+        });
+    </script>
+</body>
+</html>
